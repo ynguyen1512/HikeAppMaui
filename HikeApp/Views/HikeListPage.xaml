@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:HikeApp.ViewModels"
+             x:DataType="viewModels:HikeListPageViewModel"
+             x:Class="HikeApp.Views.HikeListPage"
+             xmlns:models="clr-namespace:HikeApp.Models"
+             Title="Hike List">
+    <StackLayout Margin="10">
+        <Label 
+            Text="Hike List Page" FontSize="28"/>
+        <HorizontalStackLayout Margin="0,30,0,0">
+            <Button Text="Add Hike" Command="{Binding AddUpdateHikeCommand}"/>
+            <Button Text="Delete All" Command="{Binding DeleteAllHikesCommand}" HorizontalOptions="EndAndExpand" Margin="20,0,0,0"/>
+        </HorizontalStackLayout>
+
+        <CollectionView ItemsSource="{Binding Hikes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:HikeModel">
+                    <Frame Margin="10" Padding="10">
+                        <StackLayout>
+                            <HorizontalStackLayout Spacing="35">
+                                <Label Text="Hike Name: " FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding NameOfHike}" FontSize="18" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="Location: " FontSize="18"/>
+                                <Label Text="{Binding Location}" FontSize="18"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="Parking Available: " FontSize="18"/>
+                                <Label Text="{Binding ParkingAvailable}" FontSize="18"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="Length: " FontSize="18"/>
+                                <Label Text="{Binding Length}" FontSize="18"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="Level: " FontSize="18"/>
+                                <Label Text="{Binding Level}" FontSize="18"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Text="Description: " FontSize="18"/>
+                                <Label Text="{Binding Description}" FontSize="18"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HikeListPageViewModel}},Path=DisplayActionCommand}"
+                                  CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

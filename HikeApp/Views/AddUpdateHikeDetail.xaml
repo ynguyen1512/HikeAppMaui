@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HikeApp.Views.AddUpdateHikeDetail"
+             Title="Add / Update Hike Detail">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="SlateGray"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10" Spacing="15">
+        <VerticalStackLayout>
+            <Label Text="Name Of Hike"/>
+            <Entry Placeholder="Name of Hike" Text="{Binding HikeDetail.NameOfHike}"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Location"/>
+            <Entry Placeholder="Location" Text="{Binding HikeDetail.Location}"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout >
+            <Label Text="Parking Available" />
+            <Switch IsToggled="{Binding HikeDetail.ParkingAvailable}" Margin="0,0,330,0"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout>
+            <Label Text="Length"/>
+            <Entry Placeholder="Length" Text="{Binding HikeDetail.Length}"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+        
+
+        <VerticalStackLayout>
+            <Label Text="Level" />
+            <Entry Placeholder="Level" Text="{Binding HikeDetail.Level}"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+        
+
+        <VerticalStackLayout>
+            <Label Text="Description"/>
+            <Entry Placeholder="Description" Text="{Binding HikeDetail.Description}"/>
+            <BoxView HeightRequest="0.8" Color="Gray"/>
+        </VerticalStackLayout>
+
+        <Button Text="Save" Command="{Binding AddUpdateHikeCommand}"/>
+    </StackLayout>
+</ContentPage>
